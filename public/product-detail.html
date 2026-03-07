@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product-Detail</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav
+      class="fixed h-16 w-full top-0 left-0 z-50 flex justify-between items-center p-3 bg-amber-50 shadow-md md:h-20 lg:h-24">
+      <div class="flex items-center">
+        <button onclick="history.back()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 mt-4" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <a href="index.html">
+          <img src="assets/Shri-hari-LOGO.png" alt="" class="pl-4 h-full max-h-19 w-auto object-contain">
+        </a>
+      </div>
+      <div class="flex gap-4">
+        <button id="openSearchBtn" class="cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+        </button>
+        <a href="cart.html">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7h13L17 13M7 13H5.4M17 13l1.5 7M9 21h6" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Search Section (hidden by default) -->
+    <section
+      class="search-section hidden p-3 bg-amber-50 shadow inset-0 fixed z-50 transform transition-all duration-1100">
+      <div class="flex items center gap-2 px-3 py-4 border-b">
+        <button id="backBtn" class="text-2xl shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" shrink-0fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+          </svg>
+        </button>
+        <input type="text" id="searchInput" placeholder="Search..."
+          class="flex-1 px-3 py-2 rounded-full border text-lg focus:outline-none">
+        <button id="searchBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-gray-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z">
+          </svg>
+        </button>
+      </div>
+    </section>
+  </header>
+  <main class="mx-auto max-w-6xl px-4 py-6 sm:py-10 pt-20 scroll-mt-16">
+    <nav class="mb-4 text-xs text-slate-500 ">
+      <a href="index.html" class="hover:text-sky-700">Home</a>/
+      <a href="products.html" class="hover:text-sky-700">Products</a>/
+      <span id="breadcrumb-name">Loading...</span>
+    </nav>
+    <div class="grid gap-8 lg:grid-cols-2">
+      <!-- left: Images -->
+      <section>
+        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100">
+          <img id="product-image" src="assets/winter-collection.png" alt="Ladoo Gopal Ji Dress" class="object-cover w-full h-full">
+        </div>
+      </section>
+      <!-- right: Info -->
+      <section class="space-y-4">
+        <div>
+          <p id="product-category" class="text-xs uppercase font-medium text-sky-700 tracking-[0.21em]">Winter Collection</p>
+          <h1 id="product-name" class="text-xl font-semibold mt-1">Ladoo Gopal Ji Velvet Dress (Size 2–3)</h1>
+          <p id="short-description" class="text-sm mt-1 text-slate-600">Soft velvet dress with zari work for Thakur Ji.</p>
+        </div>
+        <div class="flex gap-3 items-end">
+          <p id="actual-price" class="text-2xl font-semibold text-emerald-700">₹349</p>
+          <p id="mrp" class="text-sm text-slate-500 line-through">₹499</p>
+          <p id="discount-percentage" class="text-xs text-emerald-600 font-medium">30% OFF</p>
+        </div>
+        <div class="space-y-1 text-sm text-slate-700">
+          <p class="text-sm"><span class="font-medium">Fabric: </span><span id="fabric"> Premium Velvet</span></p>
+          <p><span class="font-medium">Work: </span><span id="work"> Zari & Lace Work</span></p>
+          <p><span class="font-medium">Ideal for:</span><span id="ideal-for"> Daily Pooja / Festivals</span></p>
+          <p><span class="font-medium">Includes: </span><span id="includes"> Dress, Mukut & Mala</span></p>
+        </div>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <button id="add-to-cart-btn" class="rounded-full bg-sky-600 px-6 py-2.5 text-sm text-white hover:bg-sky-700 transition">Add to
+            Cart</button>
+          <a href="" id="whatsapp-btn"
+            class="rounded-full border border-sky-300 text-sm text-sky-600 px-5 py-2.5 hover:bg-slate-100 transition">Order
+            on WhatsApp</a>
+        </div>
+
+        <section class="mt-4 border-t border-slate-300 pt-4">
+          <h2 class="text-sm font-semibold text-slate-900">Description</h2>
+          <p id="description" class="mt-1 text-sm text-slate-700 leading-relaxed">
+            Beautifully handcrafted Ladoo Gopal Ji dress made with premium velvet
+            fabric. Ideal for winter pooja and festive occasions like Janmashtami
+            and Diwali.
+          </p>
+        </section>
+      </section>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer class="pt-2 bg-gray-900">
+    <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+
+        <!-- Brand / About -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-200">
+            Shri Hari Shringar
+          </h3>
+          <p class="mt-1 text-sm text-gray-500 max-w-sm">
+            Handcrafted Dresses, Winter Wear & Abhushan for Ladoo Gopal Ji, made with love.
+          </p>
+        </div>
+
+        <!-- Contact & Links -->
+        <div class="text-sm text-gray-500 space-y-1">
+          <p class="font-medium text-gray-200">Contact</p>
+          <p>Muzaffarnagar, Uttar Pradesh, India</p>
+          <p>WhatsApp: <a href="https://wa.me/91XXXXXXXXXX" class="text-sky-600 hover:underline">+91-XXXXXXXXXX</a></p>
+          <p>Email: <a href="mailto:yourshop@email.com" class="text-sky-600 hover:underline">yourshop@email.com</a></p>
+          <p>Instagram: <a href="https://instagram.com/yourhandle" class="text-sky-600 hover:underline">@yourhandle</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom line -->
+      <div
+        class="mt-6 border-t border-slate-500 pt-4 text-xs text-gray-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div class="text-center p-2 text-gray-300 text-sm bg-gray-800">
+          &copy; 2026 Shri Hari Shringar. All rights reserved.
+        </div>
+      </div>
+  </footer>
+  <script src="js/search.js"></script>
+  <script src="js/product-detail.js"></script>
+</body>
+
+</html>

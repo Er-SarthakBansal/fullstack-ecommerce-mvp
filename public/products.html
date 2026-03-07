@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All-Products</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav
+      class="fixed h-16 w-full top-0 left-0 z-50 flex justify-between items-center p-3 bg-amber-50 shadow-md md:h-20 lg:h-24">
+      <div class="flex items-center">
+        <button onclick="history.back()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 mt-4" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <a href="index.html">
+          <img src="assets/Shri-hari-LOGO.png" alt="" class="pl-4 h-full max-h-19 w-auto object-contain">
+        </a>
+      </div>
+      <div class="flex gap-4">
+        <button id="openSearchBtn" class="cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+        </button>
+        <a href="cart.html">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7h13L17 13M7 13H5.4M17 13l1.5 7M9 21h6" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Search Section (hidden by default) -->
+    <section
+      class="search-section hidden p-3 bg-amber-50 shadow inset-0 fixed z-50 transform transition-all duration-1100">
+      <div class="flex items center gap-2 px-3 py-4 border-b">
+        <button id="backBtn" class="text-2xl shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" shrink-0fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+          </svg>
+        </button>
+        <input type="text" id="searchInput" placeholder="Search..."
+          class="flex-1 px-3 py-2 rounded-full border text-lg focus:outline-none">
+        <button id="searchBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-gray-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z">
+          </svg>
+        </button>
+      </div>
+    </section>
+  </header>
+  <main id="top" class="mx-auto max-w-6xl px-4 py-8 space-y-4 pt-20 scroll-mt-16">
+    <!-- Heading Section -->
+    <section class="mb-6">
+      <h1 class="text-2xl font-semibold mb-2">All Products Page</h1>
+      <p class="text-sm text-slate-600">Browse Ladoo Gopal ji dresses by category.</p>
+    </section>
+
+    <!-- Winter Collection -->
+    <section id="winter" class="space-y-3 scroll-mt-16">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-2xl font-semibold">Winter Collection</h2>
+        <a href="#top" class="text-sm text-sky-600 hover:underline">Back to top</a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" id="winter-container">
+        <!-- Example product card inside grid -->
+        <!-- <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block rounded-xl border border-slate-200 bg-white p-3 hover:shadow-md transition">
+          <div class="aspect-square overflow-hidden rounded-lg bg-slate-100">
+            <img src="assets/winter-collection.png" alt="Ladoo Gopal Ji Winter Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition">
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="text-xs uppercase tracking-wide text-slate-500">Winter Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a>
+        <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block rounded-xl border border-slate-200 bg-white p-3 hover:shadow-md transition">
+          <div class="aspect-square overflow-hidden rounded-lg bg-slate-100">
+            <img src="assets/winter-collection.png" alt="Ladoo Gopal Ji Winter Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition" />
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="text-xs uppercase tracking-wide text-slate-500">Winter Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a>
+        <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block rounded-xl border border-slate-200 bg-white p-3 hover:shadow-md transition">
+          <div class="aspect-square overflow-hidden rounded-lg bg-slate-100">
+            <img src="assets/winter-collection.png" alt="Ladoo Gopal Ji Winter Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition" />
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="text-xs uppercase tracking-wide text-slate-500">Winter Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a>
+        <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block rounded-xl border border-slate-200 bg-white p-3 hover:shadow-md transition">
+          <div class="aspect-square overflow-hidden rounded-lg bg-slate-100">
+            <img src="assets/winter-collection.png" alt="Ladoo Gopal Ji Winter Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition">
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="text-xs uppercase tracking-wide text-slate-500">Winter Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a> -->
+      </div>
+    </section>
+
+    <!-- Festive Collection -->
+    <section id="festive" class="space-y-3 scroll-mt-16">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-2xl font-semibold">Festive Collection</h2>
+        <a href="#top" class="text-sm text-sky-600 hover:underline">Back to top</a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" id="festive-container">
+        <!-- <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
+          <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
+            <img src="assets/festive-collection.png" alt="Ladoo Gopal Ji Festive Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition ">
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="uppercase text-xs tracking-wide text-slate-500">Festive Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a>
+        <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
+          <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
+            <img src="assets/festive-collection.png" alt="Ladoo Gopal Ji Festive Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition ">
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="uppercase text-xs tracking-wide text-slate-500">Festive Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a>
+        <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
+          <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
+            <img src="assets/festive-collection.png" alt="Ladoo Gopal Ji Festive Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition ">
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="uppercase text-xs tracking-wide text-slate-500">Festive Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a>
+        <a href="/product.html?id=PRODUCT_ID_HERE"
+          class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
+          <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
+            <img src="assets/festive-collection.png" alt="Ladoo Gopal Ji Festive Dress"
+              class="h-full w-full object-cover group-hover:scale-105 transition ">
+          </div>
+          <div class="mt-2 space-y-1">
+            <p class="uppercase text-xs tracking-wide text-slate-500">Festive Collection</p>
+            <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">Red Woolen Dress with Cap</h3>
+            <p class="text-sm font-medium text-emerald-700">₹349</p>
+            <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+          </div>
+        </a> -->
+      </div>
+    </section>
+    <section id="daily" class="space-y-3 scroll-mt-16">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-2xl font-semibold">Daily Collection</h2>
+        <a href="#top" class="text-sm text-sky-600 hover:underline">Back to top</a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" id="daily-container">
+      </div>
+    </section>
+    <section id="accessories" class="space-y-3 scroll-mt-16">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-2xl font-semibold">Accessories</h2>
+        <a href="#top" class="text-sm text-sky-600 hover:underline">Back to top</a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" id="accessory-container">
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="pt-2 bg-gray-900">
+    <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+
+        <!-- Brand / About -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-200">
+            Shri Hari Shringar
+          </h3>
+          <p class="mt-1 text-sm text-gray-500 max-w-sm">
+            Handcrafted Dresses, Winter Wear & Abhushan for Ladoo Gopal Ji, made with love.
+          </p>
+        </div>
+
+        <!-- Contact & Links -->
+        <div class="text-sm text-gray-500 space-y-1">
+          <p class="font-medium text-gray-200">Contact</p>
+          <p>Muzaffarnagar, Uttar Pradesh, India</p>
+          <p>WhatsApp: <a href="https://wa.me/91XXXXXXXXXX" class="text-sky-600 hover:underline">+91-XXXXXXXXXX</a></p>
+          <p>Email: <a href="mailto:yourshop@email.com" class="text-sky-600 hover:underline">yourshop@email.com</a></p>
+          <p>Instagram: <a href="https://instagram.com/yourhandle" class="text-sky-600 hover:underline">@yourhandle</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom line -->
+      <div
+        class="mt-6 border-t border-slate-500 pt-4 text-xs text-gray-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div class="text-center p-2 text-gray-300 text-sm bg-gray-800">
+          &copy; 2026 Shri Hari Shringar. All rights reserved.
+        </div>
+      </div>
+  </footer>
+  <script src="js/search.js"></script>
+  <script src="js/products.js"></script>
+</body>
+
+</html>

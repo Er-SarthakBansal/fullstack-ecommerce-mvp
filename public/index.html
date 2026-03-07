@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Shri Hari Shringar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav
+      class="fixed h-16 w-full top-0 left-0 z-50 flex justify-between items-center p-3 bg-amber-50 shadow-md md:h-20 lg:h-24">
+      <div class="flex items-center">
+        <a href="index.html">
+          <img src="assets/Shri-hari-LOGO.png" alt="" class="pt-1 h-full max-h-19 w-auto object-contain">
+        </a>
+      </div>
+      <div class="flex gap-4">
+        <button id="openSearchBtn" class="cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+        </button>
+        <a href="cart.html">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7h13L17 13M7 13H5.4M17 13l1.5 7M9 21h6" />
+          </svg>
+        </a>
+        <button id="menu-btn">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 hover:text-yellow-500 transition-colors duration-200" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Search Section (hidden by default) -->
+    <section
+      class="search-section hidden p-3 bg-amber-50 shadow inset-0 fixed z-50 transform transition-all duration-1100">
+      <div class="flex items center gap-2 px-3 py-4 border-b">
+        <button id="backBtn" class="text-2xl shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" shrink-0fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <input type="text" id="searchInput" placeholder="Search..."
+          class="flex-1 px-3 py-2 rounded-full border text-lg focus:outline-none">
+        <button id="searchBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-gray-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z">
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobileMenu" class="hidden inset-0 fixed z-50">
+      <div id="menuOverlay" class="bg-black/30 absolute inset-0"></div>
+      <div id="menuPanel"
+        class="absolute top-0 right-0 h-full w-2/3 max-w-xs bg-amber-100 transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
+        <div class="flex items-center justify-between px-4 py-3 border-b">
+          <span class="font-semibold text-lg">Menu</span>
+          <button id="closeMenuBtn" class="text-xl">
+            ✕
+          </button>
+        </div>
+        <!-- Menu links -->
+        <nav class="flex-1 px-4 py-3 space-y-3">
+          <a href="/" class="block py-2">Home</a>
+          <a href="/products" class="block py-2">Products</a>
+          <a href="/about" class="block py-2">About</a>
+          <a href="/contact" class="block py-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-16">
+    <section class="bg-cover bg-center h-100 lg:h-160 " style="background-image: url('assets/hero-bg.png')">
+      <div class="max-w-6x1 mx-auto text-center">
+        <h1 class="text-4xl pt-4 ml-4 mb-4 font-bold text-amber-50 lg:pt-50 lg:mr-180 lg:text-6xl">Festive Collection
+          -2026</h1>
+        <p class="text-lg text-amber-100 mr-14 lg:mr-180 lg:text-2xl">Handcrafted dresses</p>
+        <p class="text-lg text-amber-100 mr-14 lg:mr-180 lg:text-2xl">for your</p>
+        <p class="text-lg text-amber-100 mr-14 mb-10 italic lg:mr-180 lg:text-2xl">Kanha ji</p>
+        <a href="#shop-by-category"
+          class="bg-green-700  mr-14 px-6 py-3 rounded font-bold tracking-wide uppercase text-white transition lg:mr-180 lg:px-9 lg:py-5 lg:text-2xl lg:rounded-xl">Shop
+          Now</a>
+      </div>
+    </section>
+    <section class="px-2 mt-6">
+      <div class="max-w-6xl mx-auto px-2 scroll-mt-16" id="shop-by-category">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Shop by Category</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="products.html#festive" class="flex flex-col items-center">
+            <img src="assets/festive-collection.png" class="w-25 h-25 object-cover rounded-full shadow-sm"
+              alt="Festive Collection">
+            <span class="mt-2 font-medium text-gray-700">Festive & Heavy Work</span>
+          </a>
+          <a href="products.html#winter" class="flex flex-col items-center">
+            <img src="assets/winter-collection.png" class="w-25 h-25 object-cover rounded-full shadow-sm"
+              alt="Winter Collection">
+            <span class="mt-2 font-medium text-gray-700">Winter Special</span>
+          </a>
+          <a href="products.html#daily" class="flex flex-col items-center">
+            <img src="assets/daily-collection.png" class="w-25 h-25 object-cover rounded-full shadow-sm"
+              alt="Daily Collection">
+            <span class="mt-2 font-medium text-gray-700">Daily Pooja</span>
+          </a>
+          <a href="products.html#accessories" class="flex flex-col items-center">
+            <img src="assets/Accessories.png" class="w-25 h-25 object-cover rounded-full shadow-sm" alt="accessories">
+            <span class="mt-2 font-medium text-gray-700">Accessories</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="px-2 mt-6">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Featured Products</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" id="featured-container">
+          <!-- JavaScript will load real products here -->
+        </div>
+      </div>
+    </section>
+    <section class="mt-2 pb-4">
+      <div class="mx-auto max-w-5xl rounded-2xl bg-amber-100 px-4 py-6 
+              sm:px-8 sm:py-8 
+              lg:px-10 lg:py-10 
+              flex flex-col sm:flex-row items-center justify-between gap-4 
+              shadow-sm border border-amber-200">
+        <!-- Text -->
+        <div class="text-center sm:text-left">
+          <h2 class="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
+            Still not sure what to buy?
+          </h2>
+          <p class="mt-1 text-sm sm:text-base text-gray-600">
+            Browse all <span class="font-medium">dresses, winter wear & Abhushan</span> in one place.
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+
+          <!-- Main Button -->
+          <a href="products.html" class="inline-flex items-center justify-center rounded-full px-5 py-2.5 
+               text-sm font-medium bg-amber-900 text-white hover:bg-amber-950 transition">
+            Browse all products
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/916398165279?text=Hi%20I%20want%20to%20see%20more%20Ladoo%20Gopal%20Ji%20dresses"
+            class="inline-flex items-center justify-center rounded-full px-4 py-2 
+               text-xs sm:text-sm font-medium border border-amber-900 text-amber-900 
+               bg-white hover:bg-white/90 transition">
+            Need help choosing?
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="pt-2 bg-gray-900">
+    <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+
+        <!-- Brand / About -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-200">
+            Shri Hari Shringar
+          </h3>
+          <p class="mt-1 text-sm text-gray-500 max-w-sm">
+            Handcrafted Dresses, Winter Wear & Abhushan for Ladoo Gopal Ji, made with love.
+          </p>
+        </div>
+
+        <!-- Contact & Links -->
+        <div class="text-sm text-gray-500 space-y-1">
+          <p class="font-medium text-gray-200">Contact</p>
+          <p>Muzaffarnagar, Uttar Pradesh, India</p>
+          <p>WhatsApp: <a href="https://wa.me/91XXXXXXXXXX" class="text-sky-600 hover:underline">+91-XXXXXXXXXX</a></p>
+          <p>Email: <a href="mailto:yourshop@email.com" class="text-sky-600 hover:underline">yourshop@email.com</a></p>
+          <p>Instagram: <a href="https://instagram.com/yourhandle" class="text-sky-600 hover:underline">@yourhandle</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom line -->
+      <div
+        class="mt-6 border-t border-slate-500 pt-4 text-xs text-gray-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div class="text-center p-2 text-gray-300 text-sm bg-gray-800">
+          &copy; 2026 Shri Hari Shringar. All rights reserved.
+        </div>
+      </div>
+  </footer>
+  <script src="js/menu.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/home.js"></script>
+</body>
+
+</html>
