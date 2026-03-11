@@ -99,6 +99,9 @@ async function addToCart(product){
         userId:"user123",
         productId: product._id
       })
+      })
+      .then(res => res.json())
+      .then(data => {alert(data.message);
     });
   }catch (error) {
     console.error("Error adding to cart:", error);

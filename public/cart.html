@@ -17,11 +17,16 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <h1 class="text-2xl font-semibold mt-1 pl-3 text-gray-800">Shopping Bag</h1>
+        <h1 class="text-2xl font-bold mt-1 pl-3 text-gray-800">Shopping Bag</h1>
       </div>
     </nav>
   </header>
-  <div id="cart-container" class="p-11"></div>
+  <div id="cart-container" class="p-11 flex flex-col min-h-screen"></div>
+  <div id="checkout-area" class="sticky bottom-0 px-4 py-2 bg-white">
+      <button id="checkout-btn" class="w-full bg-green-600 text-white py-3 rounded-lg shadow hover:bg-green-700">
+        <a href="checkout.html"> Checkout </a>
+      </button>
+    </div>
   <script src="js/cart.js"></script>
 </body>
 </html>
