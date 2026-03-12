@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/products",productRoutes);
 app.use("/api/cart",cartRoutes);
+app.use("/api/oder",orderRoutes);
 // app.get('/products', async (req,res) => {
 //   const products = await product.find();
 //   res.render('product-listing', {products});
