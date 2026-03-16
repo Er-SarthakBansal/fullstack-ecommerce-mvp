@@ -30,3 +30,24 @@ async function loadSummary(){
   orderSummary.appendChild(totalDiv);
 }
 loadSummary();
+const form = document.querySelector('#shipping-form');
+form.addEventListener("submit", async(e)=>{
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+  data.userId = "user123";
+  try{
+    const res = await fetch("https://localhost:5000/api/orders",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify(data),
+    });
+    if(!res){
+      throw new Error("Request Failed");
+    }
+    const result = await res.json();
+    console.log(result);
+  }catch(err){
+    console.error("Error:",err);
+  }
+  
+})

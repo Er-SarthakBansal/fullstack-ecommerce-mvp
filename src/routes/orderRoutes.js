@@ -43,15 +43,17 @@ router.post('/', async (req, res) => {
       total += product.price * item.quantity;
     }
     order.totalAmount = total;
-    await order.save();
+    const savedOrder = await order.save();
     cart.items = [];
     await cart.save();
     res.status(201).json({
-      "message": "Order created successfully",
-      "orderId": order._id
+      message: "Order created successfully",
+      orderId : savedOrder._id,
     });
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({message: error.message});
   }
 });
+ export default router;

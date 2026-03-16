@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 
 import productRoutes from "./routes/productRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 dotenv.config();
 
@@ -38,7 +39,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/products",productRoutes);
 app.use("/api/cart",cartRoutes);
-app.use("/api/oder",orderRoutes);
+app.use("/api/order",orderRoutes);
 // app.get('/products', async (req,res) => {
 //   const products = await product.find();
 //   res.render('product-listing', {products});
