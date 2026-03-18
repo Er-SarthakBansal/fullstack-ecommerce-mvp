@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
 
     const result = await res.json();
     if (result.success) {
-      window.location.href = "/public/success.html";
+      window.location.href = "/success.html";
     } else {
       alert("Order failed");
     }
