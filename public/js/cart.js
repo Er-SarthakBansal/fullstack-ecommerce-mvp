@@ -1,5 +1,5 @@
 async function loadCart(){
-  const res = await fetch("http://localhost:5000/api/cart/user123");
+  const res = await fetch(`${BASE_URL}/api/cart/user123`);
   const data = await res.json();
 
   const container = document.getElementById("cart-container");
@@ -35,7 +35,7 @@ async function loadCart(){
   container.appendChild(totalDiv);
 }
 async function removeItem(productId){
-    await fetch(`http://localhost:5000/api/cart/remove/${productId}`,{method:"DELETE"});
+    await fetch(`${BASE_URL}/api/cart/remove/${productId}`,{method:"DELETE"});
     location.reload();
 }
 loadCart();

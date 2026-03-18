@@ -1,5 +1,5 @@
 async function loadSummary() {
-  const res = await fetch("http://localhost:5000/api/cart/user123");
+  const res = await fetch(`${BASE_URL}/api/cart/user123`);
   const data = await res.json();
 
   const orderSummary = document.getElementById("order-summary");
@@ -40,7 +40,7 @@ form.addEventListener("submit", async (e) => {
     shippingAddress: `${formData.name}, ${formData.addressLine}, ${formData.city} - ${formData.pincode}. Phone: ${formData.phone}`,
   };
   try {
-    const res = await fetch("http://localhost:5000/api/order/", {
+    const res = await fetch(`${BASE_URL}/api/order/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
 
     const result = await res.json();
     if (result.success) {
-      window.location.href = "/success.html";
+      window.location.href = "/public/success.html";
     } else {
       alert("Order failed");
     }

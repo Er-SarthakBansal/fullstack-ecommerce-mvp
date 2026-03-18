@@ -28,7 +28,7 @@ if (!id) {
 
 async function loadProduct() {
   try {
-    const res = await fetch(`/api/products/${id}`);
+    const res = await fetch(`${BASE_URL}/api/products/${id}`);
     if (!res.ok) throw new Error("Failed to Fetch Product");
     const product = await res.json();
 
@@ -78,7 +78,7 @@ async function loadProduct() {
 
 async function addToCart(product) {
   try {
-    await fetch("/api/cart/add", {
+    await fetch(`${BASE_URL}/api/cart/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

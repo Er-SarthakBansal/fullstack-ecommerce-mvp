@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 async function loadFeaturedProducts() {
   try {
-    const res = await fetch("api/products?featured=true");
+    const res = await fetch(`${BASE_URL}/api/products?featured=true`);
     const products = await res.json();
     renderProducts(products);
   } catch (error) {
