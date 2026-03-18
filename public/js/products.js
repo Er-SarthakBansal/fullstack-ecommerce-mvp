@@ -31,7 +31,7 @@ function renderWinter(winterProducts) {
   winterContainer.innerHTML = "";
   winterProducts.forEach(p => {
     winterContainer.innerHTML += `
-        <a href="/public/product-detail.html?id=${p._id}"
+        <a href="/product-detail.html?id=${p._id}"
           class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
           <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
             <img src="${p.image}" alt="${p.name}"
@@ -51,7 +51,7 @@ function renderFestive(festiveProducts) {
   festiveContainer.innerHTML = "";
   festiveProducts.forEach(p => {
     festiveContainer.innerHTML +=
-      `<a href="/public/product-detail.html?id=${p._id}"
+      `<a href="/product-detail.html?id=${p._id}"
             class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
             <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
               <img src="${p.image}" alt="${p.name}"
@@ -71,7 +71,7 @@ function renderDaily(dailyProducts) {
   dailyContainer.innerHTML = "";
   dailyProducts.forEach(p => {
     dailyContainer.innerHTML += `
-          <a href="/public/product-detail.html?id=${p._id}"
+          <a href="/product-detail.html?id=${p._id}"
             class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
             <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
               <img src="${p.image}" alt="${p.name}"
@@ -91,7 +91,7 @@ function renderAccessory(accessoryProducts) {
   accessoryContainer.innerHTML = "";
   accessoryProducts.forEach(p => {
     accessoryContainer.innerHTML += `
-          <a href="/public/product-detail.html?id=${p._id}"
+          <a href="/product-detail.html?id=${p._id}"
             class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
             <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
               <img src="${p.image}" alt="${p.name}"
