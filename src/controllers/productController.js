@@ -10,7 +10,6 @@ export const getAllProducts = async (req,res)=>{
       filter.featured = featured === "true";
 
     const products = await Product.find(filter).select("name price image category");
-    console.log(products);
     res.status(200).json(products);
   }catch(error){
     res.status(500).json({message : error.message});
@@ -25,7 +24,6 @@ export const getProductById = async (req,res) => {
     if(!product){
       return res.status(404).json({ message: 'Product Not Found' });
     }
-    console.log(product);
     res.status(200).json(product);
   }catch(error){
     res.status(500).json({message: error.message});

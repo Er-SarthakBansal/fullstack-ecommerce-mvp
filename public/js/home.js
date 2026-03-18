@@ -1,6 +1,27 @@
+function checkDevice() {
+  const blocker = document.getElementById("desktop-block");
+  const app = document.querySelector(".app");
+
+  if (!blocker || !app) return;
+
+  if (window.innerWidth > 768) {
+    blocker.classList.remove("hidden");
+    blocker.classList.add("flex");
+
+    app.classList.add("hidden");
+  } else {
+    blocker.classList.add("hidden");
+    blocker.classList.remove("flex");
+
+    app.classList.remove("hidden");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  checkDevice();
+  window.addEventListener("resize", checkDevice);
   loadFeaturedProducts();
-})
+});
 async function loadFeaturedProducts() {
   try {
     const res = await fetch("api/products?featured=true");

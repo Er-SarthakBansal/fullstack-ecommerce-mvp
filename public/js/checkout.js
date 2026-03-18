@@ -1,10 +1,10 @@
-async function loadSummary(){
+async function loadSummary() {
   const res = await fetch("http://localhost:5000/api/cart/user123");
   const data = await res.json();
 
   const orderSummary = document.getElementById("order-summary");
-  let subTotal=0, shipFee=50 ,total=0;
-  
+  let subTotal = 0, shipFee = 50, total = 0;
+
   data.items.forEach(item => {
     const div = document.createElement("div");
     div.className = "flex justify-between py-2";
@@ -31,23 +31,28 @@ async function loadSummary(){
 }
 loadSummary();
 const form = document.querySelector('#shipping-form');
-form.addEventListener("submit", async(e)=>{
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(form));
-  data.userId = "user123";
-  try{
-    const res = await fetch("https://localhost:5000/api/orders",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+  const formData = Object.fromEntries(new FormData(form));
+  const data = {
+    userId: "user123",
+    paymentMethod: formData.paymentMethod,
+    shippingAddress: `${formData.name}, ${formData.addressLine}, ${formData.city} - ${formData.pincode}. Phone: ${formData.phone}`,
+  };
+  try {
+    const res = await fetch("http://localhost:5000/api/order/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    if(!res){
-      throw new Error("Request Failed");
-    }
+
     const result = await res.json();
-    console.log(result);
-  }catch(err){
-    console.error("Error:",err);
+    if (result.success) {
+      window.location.href = "/success.html";
+    } else {
+      alert("Order failed");
+    }
+  } catch (err) {
+    console.error("Error:", err);
   }
-  
-})
+});

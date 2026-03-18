@@ -20,16 +20,16 @@ const description = document.getElementById("description");
 const whatsappBtn = document.getElementById("whatsapp-btn");
 const addToCartBtn = document.getElementById("add-to-cart-btn");
 
-if(!id){
+if (!id) {
   productName.textContent = "Product Not Found";
-}else{
+} else {
   loadProduct();
 }
 
-async function loadProduct(){
-  try{
+async function loadProduct() {
+  try {
     const res = await fetch(`/api/products/${id}`);
-    if(!res.ok) throw new Error("Failed to Fetch Product");
+    if (!res.ok) throw new Error("Failed to Fetch Product");
     const product = await res.json();
 
     breadcrumb.textContent = product.name;
@@ -41,9 +41,9 @@ async function loadProduct(){
     description.textContent = product.Description;
     price.textContent = `₹${product.price}`;
 
-    if(product.mrp && product.mrp>product.price){
+    if (product.mrp && product.mrp > product.price) {
       mrp.textContent = product.mrp;
-      const off = Math.round(((product.mrp)-(product.price))/(product.mrp)*100);
+      const off = Math.round(((product.mrp) - (product.price)) / (product.mrp) * 100);
       discount.textContent = `${off}% OFF`
     }
     fabric.textContent = product.fabric;
@@ -58,52 +58,51 @@ async function loadProduct(){
     );
     whatsappBtn.href = `https://wa.me/${shopPhone}?text=${waText}`;
 
-    addToCartBtn.addEventListener("click",()=>addToCart(product));
+    addToCartBtn.addEventListener("click", () => addToCart(product));
 
-  }catch(err){
+  } catch (err) {
     console.log(err);
     productName.textContent = "Unable to load product";
   }
-  function formatCategory(cat){
-    if(!cat) return "";
+  function formatCategory(cat) {
+    if (!cat) return "";
     const map = {
-      winter:"winter collection",
-      daily:"daily wear",
-      festive:"festive collection",
-      accessory:"accessory"
+      winter: "winter collection",
+      daily: "daily wear",
+      festive: "festive collection",
+      accessory: "accessory"
     };
-    return map[cat]|| cat;
+    return map[cat] || cat;
   }
 }
-// function addToCart(product){
-//   const key = "lg_cart";
-//   const existing = JSON.parse(localStorage.getItem(key)||"[]");
-//   const index = existing.findIndex(item => item._id === product._id );
-//   if(index>=0){
-//     existing[index].qty += 1;
-//   }else{
-//     existing.push({...product, qty:1 });
-//   }
-//   localStorage.setItem(key, JSON.stringify(existing));
-//   alert("Added to cart ✅");
-// }
 
-async function addToCart(product){
-  try{
-    await fetch("/api/cart/add",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
+async function addToCart(product) {
+  try {
+    await fetch("/api/cart/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        userId:"user123",
+        userId: "user123",
         productId: product._id
       })
-      })
+    })
       .then(res => res.json())
-      .then(data => {alert(data.message);
-    });
-  }catch (error) {
+      .then(data => {
+       showToast(data.message);
+      });
+  } catch (error) {
     console.error("Error adding to cart:", error);
   }
+}
+function showToast(message) {
+  const toast = document.getElementById("toast");
+
+  toast.innerText = message;
+  toast.classList.remove("hidden");
+
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 2000);
 }
