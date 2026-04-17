@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { type } from "os";
+import { text } from "stream/consumers";
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -10,6 +11,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     enum: ["winter", "daily", "festive", "accessory"],
     required: true,
+    index:true
   },
   price: {
     type: Number,
@@ -30,10 +32,11 @@ const productSchema = new mongoose.Schema({
   featured:{
     type: Boolean,
     default: false,
+    index: true
   }
 },
   {
     timestamps: true,
   });
-
+productSchema.index({name: "text"});
 export default mongoose.model('Product',productSchema);

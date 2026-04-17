@@ -50,6 +50,8 @@ async function loadProduct() {
     work.textContent = product.work;
     includes.textContent = product.includes;
     description.textContent = product.description;
+    addToCartBtn.classList.remove("hidden");
+    whatsappBtn.classList.remove("hidden");
 
     // WhatsApp order link
     const shopPhone = "916398165279";

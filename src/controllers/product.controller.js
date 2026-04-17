@@ -9,7 +9,7 @@ export const getAllProducts = async (req,res)=>{
     if(featured)
       filter.featured = featured === "true";
 
-    const products = await Product.find(filter).select("name price image category");
+    const products = await Product.find(filter).select("name price image category").lean();
     res.status(200).json(products);
   }catch(error){
     res.status(500).json({message : error.message});
@@ -29,3 +29,11 @@ export const getProductById = async (req,res) => {
     res.status(500).json({message: error.message});
   }
 };
+
+export const getProductByName = async (req,res) => {
+  const products = await Product.find({$text : {$search: req.query.q}}).sort({score :{$meta:"textScore"}}).limit(5).select("name category price image");
+  if(!products){
+    res.status(404).json({message: 'Not Exist'});
+  }
+  res.status(200).json(products);
+}

@@ -53,3 +53,11 @@ function renderProducts(products) {
     `
   });
 }
+
+const links = document.querySelectorAll(".nav-link");
+const menu = document.querySelector("#mobileMenu");
+links.forEach(link =>{
+  link.addEventListener("click", () => {
+    menu.classList.add("hidden");
+  });
+});

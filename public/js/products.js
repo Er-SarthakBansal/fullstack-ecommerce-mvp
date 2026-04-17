@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  loadProductsByCategory();
+  let allProducts = document.querySelector('.all-products');
+  let searchResult = document.querySelector('.search-result');
+  if(window.location.search){
+      allProducts.classList.add('hidden');
+      searchResult.classList.remove('hidden');
+      loadSearchedProducts();
+    }else{
+      loadProductsByCategory();
+    }
 })
+
 async function loadProductsByCategory() {
   try {
     const categories = ['winter','festive','daily','accessory'];
@@ -24,9 +33,9 @@ async function loadProductsByCategory() {
     console.log("Category Products Loading Error:", err);
   }
 }
-const winterContainer = document.getElementById("winter-container");
-winterContainer.innerHTML = "Loading products...";
+
 function renderWinter(winterProducts) {
+  const winterContainer = document.getElementById("winter-container");
   winterContainer.innerHTML = "";
   winterProducts.forEach(p => {
     winterContainer.innerHTML += `
@@ -45,9 +54,9 @@ function renderWinter(winterProducts) {
         </a>`
   });
 }
-const festiveContainer = document.getElementById("festive-container");
-festiveContainer.innerHTML = "Loading products...";
+
 function renderFestive(festiveProducts) {
+  const festiveContainer = document.getElementById("festive-container");
   festiveContainer.innerHTML = "";
   festiveProducts.forEach(p => {
     festiveContainer.innerHTML +=
@@ -66,9 +75,9 @@ function renderFestive(festiveProducts) {
           </a>`;
   });
 }
-const dailyContainer = document.getElementById("daily-container");
-dailyContainer.innerHTML = "Loading products...";
+
 function renderDaily(dailyProducts) {
+  const dailyContainer = document.getElementById("daily-container");
   dailyContainer.innerHTML = "";
   dailyProducts.forEach(p => {
     dailyContainer.innerHTML += `
@@ -87,9 +96,9 @@ function renderDaily(dailyProducts) {
           </a>`
   });
 }
-const accessoryContainer = document.getElementById("accessory-container");
-accessoryContainer.innerHTML = "Loading products...";
+
 function renderAccessory(accessoryProducts) {
+  const accessoryContainer = document.getElementById("accessory-container");
   accessoryContainer.innerHTML = "";
   accessoryProducts.forEach(p => {
     accessoryContainer.innerHTML += `
@@ -107,4 +116,35 @@ function renderAccessory(accessoryProducts) {
             </div>
           </a>`
   });
+}
+
+async function loadSearchedProducts(){
+  try{
+    const searchHeadline = document.querySelector(".search-headline");
+    const searchContainer = document.querySelector("#search-container");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q');
+    const Products = await fetch(`${BASE_URL}/api/products?q=${query}`).then((res)=>res.json());
+    searchHeadline.textContent = `Searched Results For : ${query}`;
+    searchContainer.innerHTML = '';
+    Products.forEach(p => {
+    searchContainer.innerHTML += `
+          <a href="/product-detail.html?id=${p._id}"
+            class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
+            <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
+              <img src="${p.image}" alt="${p.name}" loading="lazy"
+                class="h-full w-full object-cover group-hover:scale-105 transition ">
+            </div>
+            <div class="mt-2 space-y-1">
+              <p class="uppercase text-xs tracking-wide text-slate-500">${p.category}</p>
+              <h3 class="text-sm font-semibold text-slate-900 line-clamp-1">${p.name}</h3>
+              <p class="text-sm font-medium text-emerald-700">${p.price}</p>
+              <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
+            </div>
+          </a>`});
+  }catch(err){
+    console.log("error in loading searched products:",err);
+  }
+  
 }
