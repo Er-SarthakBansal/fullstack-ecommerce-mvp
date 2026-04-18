@@ -3,9 +3,9 @@ import {getAllProducts , getProductById , getProductByName} from "../controllers
 
 const router = express.Router();
 
-router.route("/").get(getProductByName);
-
 router.route("/").get(getAllProducts);
+
+router.route("/search").get(getProductByName);
 
 router.route("/:id").get(getProductById);
 

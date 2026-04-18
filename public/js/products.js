@@ -125,7 +125,7 @@ async function loadSearchedProducts(){
 
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q');
-    const Products = await fetch(`${BASE_URL}/api/products?q=${query}`).then((res)=>res.json());
+    const Products = await fetch(`${BASE_URL}/api/products/search?q=${query}`).then((res)=>res.json());
     searchHeadline.textContent = `Searched Results For : ${query}`;
     searchContainer.innerHTML = '';
     Products.forEach(p => {
