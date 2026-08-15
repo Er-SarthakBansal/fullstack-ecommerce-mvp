@@ -1,5 +1,15 @@
 async function loadCart(){
-  const res = await fetch(`${BASE_URL}/api/cart/user123`);
+  const token  = localStorage.getItem("token");
+  const res = await fetch(`${BASE_URL}/api/cart/`,{
+    headers:{
+      "Authorization":`Bearer ${token}`
+    }
+  });
+  if(res.status === 401){
+      localStorage.removeItem("token");
+      window.location.href="/login.html";
+      return;
+    }
   const data = await res.json();
 
   const container = document.getElementById("cart-container");
@@ -35,7 +45,15 @@ async function loadCart(){
   container.appendChild(totalDiv);
 }
 async function removeItem(productId){
-    await fetch(`${BASE_URL}/api/cart/remove/${productId}`,{method:"DELETE"});
+    const res = await fetch(`${BASE_URL}/api/cart/remove/${productId}`,
+      {method:"DELETE",
+        headers:{"Authorization":`Bearer ${localStorage.getItem("token")}`}
+    });
+    if(res.status === 401){
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+      return;
+    }
     location.reload();
 }
 loadCart();

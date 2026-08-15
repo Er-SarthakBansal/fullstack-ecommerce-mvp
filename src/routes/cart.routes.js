@@ -1,13 +1,14 @@
 import express from 'express';
 import {addItem, removeItem, showItems} from '../controllers/cart.controller.js'
+import { auth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.route('/:userId').get(showItems);
+router.route('/').get(auth ,showItems);
 
-router.route('/add').post(addItem);
+router.route('/add').post(auth ,addItem);
 
-router.route('/remove/:productId').delete(removeItem);
+router.route('/remove/:productId').delete(auth ,removeItem);
 
 
 export default router;

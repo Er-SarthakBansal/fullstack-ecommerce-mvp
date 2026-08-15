@@ -1,5 +1,14 @@
 async function loadSummary() {
-  const res = await fetch(`${BASE_URL}/api/cart/user123`);
+  const res = await fetch(`${BASE_URL}/api/cart/`,{
+    headers:{
+      "Authorization":`Bearer ${localStorage.getItem("token")}`
+    }
+  });
+  if(res.status === 401){
+      localStorage.removeItem("token");
+      window.location.href="/login.html";
+      return;
+    }
   const data = await res.json();
 
   const orderSummary = document.getElementById("order-summary");
@@ -35,17 +44,23 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = Object.fromEntries(new FormData(form));
   const data = {
-    userId: "user123",
+    userId: localStorage.getItem("token"),
     paymentMethod: formData.paymentMethod,
     shippingAddress: `${formData.name}, ${formData.addressLine}, ${formData.city} - ${formData.pincode}. Phone: ${formData.phone}`,
   };
   try {
     const res = await fetch(`${BASE_URL}/api/order/`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" ,
+        "Authorization":`Bearer ${localStorage.getItem("token")}`
+      },
       body: JSON.stringify(data),
     });
-
+    if(res.status === 401){
+      localStorage.removeItem("token");
+      window.location.href="/login.html";
+      return;
+    }
     const result = await res.json();
     if (result.success) {
       window.location.href = "/success.html";

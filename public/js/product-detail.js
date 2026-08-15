@@ -79,21 +79,29 @@ async function loadProduct() {
 }
 
 async function addToCart(product) {
+  const token = localStorage.getItem("token");
+  if(!token){
+    window.location.href='/login.html';
+    return;
+  }
   try {
-    await fetch(`${BASE_URL}/api/cart/add`, {
+    const res = await fetch(`${BASE_URL}/api/cart/add`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({
-        userId: "user123",
         productId: product._id
       })
     })
-      .then(res => res.json())
-      .then(data => {
-       showToast(data.message);
-      });
+    if(res.status === 401){
+      localStorage.removeItem("token");
+      window.location.href="/login.html";
+      return;
+    }
+    const data = await res.json();
+    showToast(data.message);
   } catch (error) {
     console.error("Error adding to cart:", error);
   }

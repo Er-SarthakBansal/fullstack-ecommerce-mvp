@@ -78,15 +78,16 @@ Completed
 * Checkout flow
 * Order creation API
 * MongoDB database integration
+* JWT-based user authentication (login/signup)
+* User-specific cart and order management
 
 In Progress
 
-* Connecting checkout API from frontend
-* User authentication
+* Migrating frontend from vanilla JavaScript to Next.js
 
 Planned
 
-* JWT authentication
+* Improve authentication flow with Next.js
 * Online payment integration
 * Deployment
 

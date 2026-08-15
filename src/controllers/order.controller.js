@@ -3,7 +3,8 @@ import Cart from '../models/Cart.js';
 import Product from '../models/Product.js';
 
 export const createOrder = async (req, res) => {
-  const { userId, shippingAddress, paymentMethod } = req.body;
+  const {shippingAddress, paymentMethod } = req.body;
+  const {userId} = req.user; 
   if (!userId || !shippingAddress || !paymentMethod) {
     return res.status(400).json({ message: "Missing required fields" });
   }

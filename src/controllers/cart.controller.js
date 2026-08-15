@@ -1,7 +1,8 @@
 import Cart from '../models/Cart.js';
 
 export const addItem = async (req, res) => {
-  const { userId, productId } = req.body;
+  const { productId } = req.body;
+  const { userId } = req.user;
   let cart = await Cart.findOne({ userId });
 
   if (!cart) {
@@ -25,9 +26,10 @@ export const addItem = async (req, res) => {
 
 export const removeItem = async (req, res) => {
   const { productId } = req.params;
+    const { userId } = req.user;
   try {
     console.log(productId);
-    await Cart.updateOne({ userId: "user123" }, { $pull: { items: { productId: productId } } });
+    await Cart.updateOne({ userId: userId }, { $pull: { items: { productId: productId } } });
     res.json({ message: "Item removed from cart" });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -35,6 +37,7 @@ export const removeItem = async (req, res) => {
 };
 
 export const showItems = async (req, res) => {
-  const cart = await Cart.findOne({ userId: req.params.userId }).populate("items.productId");
+  const { userId } = req.user;
+  const cart = await Cart.findOne({ userId: userId }).populate("items.productId");
   res.json(cart);
 };

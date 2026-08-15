@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import productRoutes from "./routes/product.routes.js";
 import cartRoutes from "./routes/cart.routes.js";
 import orderRoutes from "./routes/order.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 });
 
 
+app.use("/api/auth",authRoutes);
 app.use("/api/products",productRoutes);
 app.use("/api/cart",cartRoutes);
 app.use("/api/order",orderRoutes);
