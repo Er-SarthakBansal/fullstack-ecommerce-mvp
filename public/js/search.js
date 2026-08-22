@@ -3,6 +3,7 @@ const backBtn = document.getElementById('backBtn');
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById('searchInput');
 const searchSection = document.querySelector('.search-section');
+const searchForm = document.getElementById("searchForm");
 function openSearch() {
   searchSection.classList.remove('hidden');
   searchInput.focus();
@@ -10,14 +11,16 @@ function openSearch() {
 function closeSearch() {
   searchSection.classList.add('hidden');
 }
-function handleSearch(){
+function handleSearch() {
   const query = searchInput.value.trim();
-  searchInput.innerHTML = "";
-  if(query === ""){
+  if (query === "") {
     return;
   }
-  window.location.href = `/products.html?q=${encodeURIComponent(query)}`; 
+  window.location.href = `/products.html?q=${encodeURIComponent(query)}`;
 }
 openSearchBtn.addEventListener('click', openSearch);
 backBtn.addEventListener('click', closeSearch);
-searchBtn.addEventListener('click',handleSearch);
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  handleSearch();
+});

@@ -1,17 +1,18 @@
 async function loadSummary() {
-  const res = await fetch(`${BASE_URL}/api/cart/`,{
-    headers:{
-      "Authorization":`Bearer ${localStorage.getItem("token")}`
+  const res = await fetch(`${BASE_URL}/api/cart/`, {
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     }
   });
-  if(res.status === 401){
-      localStorage.removeItem("token");
-      window.location.href="/login.html";
-      return;
-    }
+  if (res.status === 401) {
+    localStorage.removeItem("token");
+    window.location.href = "/login.html";
+    return;
+  }
   const data = await res.json();
 
   const orderSummary = document.getElementById("order-summary");
+  orderSummary.innerHTML = ``;
   let subTotal = 0, shipFee = 50, total = 0;
 
   data.items.forEach(item => {
@@ -51,14 +52,15 @@ form.addEventListener("submit", async (e) => {
   try {
     const res = await fetch(`${BASE_URL}/api/order/`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" ,
-        "Authorization":`Bearer ${localStorage.getItem("token")}`
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(data),
     });
-    if(res.status === 401){
+    if (res.status === 401) {
       localStorage.removeItem("token");
-      window.location.href="/login.html";
+      window.location.href = "/login.html";
       return;
     }
     const result = await res.json();

@@ -1,27 +1,4 @@
-function checkDevice() {
-  const blocker = document.getElementById("desktop-block");
-  const app = document.querySelector(".app");
-
-  if (!blocker || !app) return;
-
-  if (window.innerWidth > 768) {
-    blocker.classList.remove("hidden");
-    blocker.classList.add("flex");
-
-    app.classList.add("hidden");
-  } else {
-    blocker.classList.add("hidden");
-    blocker.classList.remove("flex");
-
-    app.classList.remove("hidden");
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  checkDevice();
-  window.addEventListener("resize", checkDevice);
-  loadFeaturedProducts();
-});
+loadFeaturedProducts();
 async function loadFeaturedProducts() {
   try {
     const res = await fetch(`${BASE_URL}/api/products?featured=true`);
@@ -56,7 +33,7 @@ function renderProducts(products) {
 
 const links = document.querySelectorAll(".nav-link");
 const menu = document.querySelector("#mobileMenu");
-links.forEach(link =>{
+links.forEach(link => {
   link.addEventListener("click", () => {
     menu.classList.add("hidden");
   });

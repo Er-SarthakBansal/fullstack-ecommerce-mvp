@@ -3,21 +3,27 @@ const mobileMenu = document.getElementById('mobileMenu');
 const menuOverlay = document.getElementById('menuOverlay');
 const menuPanel = document.getElementById('menuPanel');
 const closeMenuBtn = document.getElementById('closeMenuBtn');
-const login = document.getElementById('login');
+const login = document.querySelectorAll('.login');
 
-function isLogin(){
-  if(localStorage.getItem("token")){
-    login.textContent = "Logout";
+function isLogin() {
+  if (localStorage.getItem("token")) {
+    login.forEach((btn) => {
+      btn.textContent = "Logout";
+    })
 
-    login.onclick = () => {
-      login.textContent = "Login";
-      localStorage.removeItem("token");
-      isLogin();
-    };
-  }else{
-    login.onclick = () => {
-      window.location.href = "/login.html";
-    };
+    login.forEach((btn) => {
+      btn.onclick = () => {
+        btn.textContent = "Login";
+        localStorage.removeItem("token");
+        isLogin();
+      };
+    });
+  } else {
+    login.forEach((btn) => {
+      btn.onclick = () => {
+        window.location.href = "/login.html";
+      };
+    });
   }
 }
 isLogin();

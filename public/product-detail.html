@@ -45,7 +45,7 @@
     <!-- Search Section (hidden by default) -->
     <section
       class="search-section hidden p-3 bg-amber-50 shadow inset-0 fixed z-50 transform transition-all duration-1100">
-      <div class="flex items center gap-2 px-3 py-4 border-b">
+      <form id="searchForm" class="flex items-center gap-2 px-3 py-4 border-b">
         <button id="backBtn" class="text-2xl shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" shrink-0fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -54,28 +54,27 @@
         </button>
         <input type="text" id="searchInput" placeholder="Search..."
           class="flex-1 px-3 py-2 rounded-full border text-lg focus:outline-none">
-        <button id="searchBtn">
+        <button id="searchBtn" type="submit">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-gray-700" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z">
           </svg>
         </button>
-      </div>
+      </form>
     </section>
   </header>
-  <main class="mx-auto max-w-6xl px-4 py-6 sm:py-10 pt-20 scroll-mt-16">
+  <main class="mx-auto max-w-6xl px-4 py-6 pb-6 sm:pb-10 pt-20 md:pt-24 lg:pt-28">
     <nav class="mb-4 text-xs text-slate-500 ">
       <a href="index.html" class="hover:text-sky-700">Home</a>/
       <a href="products.html" class="hover:text-sky-700">Products</a>/
       <span id="breadcrumb-name">Loading...</span>
     </nav>
-    <div class="grid gap-8 lg:grid-cols-2">
+    <div class="grid gap-8 sm:grid-cols-2">
       <!-- left: Images -->
       <section>
         <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100">
-          <img id="product-image" src="" alt="Loading..."
-            class="object-cover w-full h-full">
+          <img id="product-image" src="" alt="Loading..." class="object-cover w-full h-full">
         </div>
       </section>
       <!-- right: Info -->

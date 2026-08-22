@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   let allProducts = document.querySelector('.all-products');
   let searchResult = document.querySelector('.search-result');
-  if(window.location.search){
-      allProducts.classList.add('hidden');
-      searchResult.classList.remove('hidden');
-      loadSearchedProducts();
-    }else{
-      loadProductsByCategory();
-    }
+  if (window.location.search) {
+    allProducts.classList.add('hidden');
+    searchResult.classList.remove('hidden');
+    loadSearchedProducts();
+  } else {
+    loadProductsByCategory();
+  }
 })
 
 async function loadProductsByCategory() {
   try {
-    const categories = ['winter','festive','daily','accessory'];
-    const promises = categories.map(cat => 
+    const categories = ['winter', 'festive', 'daily', 'accessory'];
+    const promises = categories.map(cat =>
       fetch(`${BASE_URL}/api/products?category=${cat}`)
-      .then(res => res.json())
+        .then(res => res.json())
     );
     const result = await Promise.all(promises);
     renderWinter(result[0]);
@@ -118,18 +118,24 @@ function renderAccessory(accessoryProducts) {
   });
 }
 
-async function loadSearchedProducts(){
-  try{
+async function loadSearchedProducts() {
+  try {
     const searchHeadline = document.querySelector(".search-headline");
     const searchContainer = document.querySelector("#search-container");
 
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q');
-    const Products = await fetch(`${BASE_URL}/api/products/search?q=${query}`).then((res)=>res.json());
-    searchHeadline.textContent = `Searched Results For : ${query}`;
+    const Products = await fetch(`${BASE_URL}/api/products/search?q=${query}`).then((res) => res.json());
+    searchHeadline.textContent = `Searched Results For : "${query}"`;
     searchContainer.innerHTML = '';
+    if (Products.length === 0) {
+      searchContainer.innerHTML = `<div class="no-results">
+      <h2>No results found</h2>
+      <p>Try checking the spelling or searching for something else.</p>
+    </div>`;
+    }
     Products.forEach(p => {
-    searchContainer.innerHTML += `
+      searchContainer.innerHTML += `
           <a href="/product-detail.html?id=${p._id}"
             class="group block border border-slate-200 bg-white p-3 rounded-xl hover:shadow-md transition">
             <div class="aspect-square rounded-lg bg-slate-100 overflow-hidden">
@@ -143,8 +149,8 @@ async function loadSearchedProducts(){
               <p class="text-[11px] text-slate-500">Size: 2 No., 3 No.</p>
             </div>
           </a>`});
-  }catch(err){
-    console.log("error in loading searched products:",err);
+  } catch (err) {
+    console.log("error in loading searched products:", err);
   }
-  
+
 }
